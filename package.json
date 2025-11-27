@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Proyecto personal de testing continuo con CI/CD enfocada en la detección temprana de errores de FrontEnd\r # Creado por: QA Automation SSr Yrvin Pachas",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cucumber-js test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
