@@ -1,0 +1,16 @@
+{
+  "name": "testing-continuosiasis",
+  "version": "1.0.0",
+  "description": "Proyecto personal de testing continuo con CI/CD enfocada en la detección temprana de errores de FrontEnd\r # Creado por: QA Automation SSr Yrvin Pachas",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2"
+  }
+}
