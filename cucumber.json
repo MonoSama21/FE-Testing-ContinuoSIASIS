@@ -3,7 +3,7 @@
         "formatOptions": {
             "snippentInterface": "async-await"
         },
-        "paths": [ "src/test/features/*.feature"],
+        "paths": [ "src/test/features/*/*.feature"],
         "publishQuite": true,
         "dryRun": false,
         "require": [
@@ -12,6 +12,9 @@
         ],
         "requireModule":[
             "ts-node/register"
+        ],
+        "format":[
+            "html:cucumber-report.html"
         ]
     }
 }
