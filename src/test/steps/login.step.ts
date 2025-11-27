@@ -9,15 +9,6 @@ let loginPage: LoginPage;
 let selectedRole = '';
 
 
-Given('I navigate to ecommerce website', async ({ pages }) => {
-    await pages.login.navigateToUrl("");
-});
-
-Given('I click on My account', async ({ pages }) => {
-    await pages.login.clickOnMyAccount();
-});
-
-
 Given('estoy en la pagina de login', async function () {
     await pageFixture.page.goto("https://siasis-dev.vercel.app/login")
 });
