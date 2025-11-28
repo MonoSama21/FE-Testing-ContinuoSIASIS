@@ -1,31 +1,38 @@
 import { Browser, BrowserContext, chromium, Page } from "@playwright/test";
-import { Before, After } from '@cucumber/cucumber';
+import { Before, After, BeforeAll, AfterAll, setDefaultTimeout } from '@cucumber/cucumber';
 import { pageFixture } from "./pageFixture";
 
-let browser: Browser
-let context: BrowserContext
-let page: Page
+let browser: Browser;
+let context: BrowserContext;
+
+// Set the default timeout for all hooks and steps to 30 seconds.
+setDefaultTimeout(30 * 1000);
+
+BeforeAll(async function () {
+  browser = await chromium.launch({
+    headless: true, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
+    channel: 'msedge' //SE ESPECIFICA EL NAVEGADOR 
+  });
+});
 
 Before(async function () {
-  
-    browser = await chromium.launch({
-        headless: true, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
-        channel: 'msedge' //SE ESPECIFICA EL NAVEGADOR 
-    }); 
-
-    context = await browser.newContext()
-    page = await context.newPage()
-    pageFixture.page = await page; 
-    page.setViewportSize({
+    context = await browser.newContext();
+    const page = await context.newPage();
+    pageFixture.page = page; 
+    await page.setViewportSize({
         width: 1500, //ANCHO DE LA PÁGINA
         height: 700, //LARGO LA PÁGINA 
     }); 
-
-})
+});
 
 After(async function ({pickle}) {
     //const img = await pageFixture.page.screenshot({path: `screenshots/${pickle.name}.png`});
     //await this.attach(img, 'image/png');
     console.log(`Finalizando el escenario: ${pickle.name}`);
-    //await pageFixture.page.close();
-})
+    await pageFixture.page.close();
+    await context.close();
+});
+
+AfterAll(async function () {
+    await browser.close();
+});
