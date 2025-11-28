@@ -9,7 +9,7 @@ let page: Page
 Before(async function () {
   
     browser = await chromium.launch({
-        headless: false, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
+        headless: true, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
         channel: 'msedge' //SE ESPECIFICA EL NAVEGADOR 
     }); 
 
@@ -24,7 +24,8 @@ Before(async function () {
 })
 
 After(async function ({pickle}) {
-    const img = await pageFixture.page.screenshot({path: `screenshots/${pickle.name}.png`});
-    await this.attach(img, 'image/png');
+    //const img = await pageFixture.page.screenshot({path: `screenshots/${pickle.name}.png`});
+    //await this.attach(img, 'image/png');
+    console.log(`Finalizando el escenario: ${pickle.name}`);
     //await pageFixture.page.close();
 })
