@@ -29,10 +29,5 @@ After(async function ({pickle}) {
     //const img = await pageFixture.page.screenshot({path: `screenshots/${pickle.name}.png`});
     //await this.attach(img, 'image/png');
     console.log(`Finalizando el escenario: ${pickle.name}`);
-    await pageFixture.page.close();
-    await context.close();
 });
 
-AfterAll(async function () {
-    await browser.close();
-});
