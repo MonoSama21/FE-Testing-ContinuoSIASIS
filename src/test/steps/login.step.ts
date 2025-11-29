@@ -10,7 +10,7 @@ let selectedRole = '';
 
 
 Given('estoy en la pagina de login', async function () {
-    await pageFixture.page.goto("https://siasis-dev.vercel.app/login")
+    await pageFixture.page.goto("https://siasis-cert.vercel.app/login")
 });
 
 When('selecciono el rol {string}', async function (role) {
@@ -26,6 +26,7 @@ When('ingreso mi nombre de usuario y contraseña validos', async function () {
 
 Then('accedo al sistema como {string}', async function (string) {
     await loginPage.validateLoginSuccess();
+    console.log(`Ingreso exitoso como ${string}`);
 });
 
 When('ingreso mi nombre de usuario y contraseña invalidos', async function () {
