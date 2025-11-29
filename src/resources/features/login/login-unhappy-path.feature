@@ -1,4 +1,4 @@
-@login-unhappy-path
+@test @login-unhappy-path
 Feature: Inicio de sesión exitoso en el sistema SIASIS
     Como usuario del sistema SIASIS
     Quiero poder validar que no se puede iniciar sesión con diferentes roles y credenciales inválidas

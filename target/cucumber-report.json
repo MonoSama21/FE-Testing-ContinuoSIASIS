@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 252614899
+              "duration": 126371999
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1212664300
+              "duration": 1674761399
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 128929299
+              "duration": 45660400
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2230512899
+              "duration": 2068400099
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19375699
+              "duration": 5201299
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4427417400
+              "duration": 5150211699
             }
           },
           {
@@ -92,7 +92,46 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3490382900
+              "duration": 4943270800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "se muestra los nombres y apellidos del personal administrativo",
+            "match": {
+              "location": "src\\test\\steps\\administrativeStaff.step.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29695599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "se muestra el estado del personal administrativo",
+            "match": {
+              "location": "src\\test\\steps\\administrativeStaff.step.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41469499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "se muestra la foto de cada personal administrativo",
+            "match": {
+              "location": "src\\test\\steps\\administrativeStaff.step.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30433699
             }
           },
           {
@@ -100,11 +139,15 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 103593500
+              "duration": 17305000
             }
           }
         ],
         "tags": [
+          {
+            "name": "@test",
+            "line": 1
+          },
           {
             "name": "@consulta-personal-administrativo",
             "line": 1
@@ -122,6 +165,10 @@
     "keyword": "Feature",
     "name": "Consulta de Personal administrativo",
     "tags": [
+      {
+        "name": "@test",
+        "line": 1
+      },
       {
         "name": "@consulta-personal-administrativo",
         "line": 1

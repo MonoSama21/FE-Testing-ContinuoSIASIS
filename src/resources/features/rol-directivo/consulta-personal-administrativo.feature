@@ -1,4 +1,4 @@
-@consulta-personal-administrativo
+@test @consulta-personal-administrativo
 Feature: Consulta de Personal administrativo
     Como usuario con el rol de Directivo
     Quiero poder consultar todos los personales administrativos disponibles
@@ -14,7 +14,7 @@ Background:
 Scenario: Validar que el rol DIRECTIVO puede consultar el personal administrativo
     When hago click en el apartado de "Personal Administrativo"
     Then se muestra en pantalla la lista de personal administrativo disponibles
-    #And se muestra los nombres y apellidos del personal administrativo
-    #And se muestra el numero de contacto del personal administrativo
-    #And se muestra el estado del personal administrativo
-    #And se muestra la foto de cada personal administrativo
+    And se muestra los nombres y apellidos del personal administrativo
+    And se muestra el numero de contacto del personal administrativo
+    And se muestra el estado del personal administrativo
+    And se muestra la foto de cada personal administrativo
