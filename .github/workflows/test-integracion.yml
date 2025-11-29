@@ -99,7 +99,7 @@ jobs:
         from: ${{ secrets.MAIL_FROM }}
         html_body: |
           <div style="font-family: Arial; padding: 20px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/GitHub_logo_2013.svg/2560px-GitHub_logo_2013.svg.png" width="180">
+            <img src="https://res.cloudinary.com/dvrsdqsl1/image/upload/v1764399269/Blue_Minimalist_Technology_Cube_Logo_1_x445ab.png" width="180">
 
             <h2 style="color:#28a745;">🟢 Pruebas Finalizadas</h2>
 
@@ -126,6 +126,6 @@ jobs:
             </p>
 
             <br>
-            <p>Saludos,<br><strong>QA Automation Yrvin Pachas</strong></p>
+            <p>Saludos,<br><strong>QA Automation Semisenior Yrvin Pachas</strong></p>
           </div>
         attachments: reporte.zip
