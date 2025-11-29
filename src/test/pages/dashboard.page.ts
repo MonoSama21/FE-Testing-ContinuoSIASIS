@@ -27,4 +27,10 @@ export class DashboardPage {
         }
     }
 
+    async validateStatusAPIAssistants() {
+        const response = await this.page.request.get("https://siasis-dev-ins2.vercel.app/auxiliares?_rsc=8e1aq");
+        expect(response.status()).toBe(200);
+        console.log("✅ La respuesta de la API es 200 OK");
+    }
+
 }

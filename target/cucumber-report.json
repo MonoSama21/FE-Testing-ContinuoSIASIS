@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 132420999
+              "duration": 217139199
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 992058900
+              "duration": 1165283000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 73395199
+              "duration": 112760299
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2078419100
+              "duration": 3440152300
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8186300
+              "duration": 16285100
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5621291400
+              "duration": 6340161099
             }
           },
           {
@@ -88,11 +88,11 @@
             "line": 16,
             "name": "se muestra en pantalla la lista de auxiliares disponibles",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:19"
+              "location": "src\\test\\steps\\assistants.step.ts:10"
             },
             "result": {
               "status": "passed",
-              "duration": 845135400
+              "duration": 2475328700
             }
           },
           {
@@ -101,11 +101,11 @@
             "line": 17,
             "name": "se muestra los nombres y apellidos del auxiliar",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:27"
+              "location": "src\\test\\steps\\assistants.step.ts:15"
             },
             "result": {
               "status": "passed",
-              "duration": 10037899
+              "duration": 116719099
             }
           },
           {
@@ -114,11 +114,11 @@
             "line": 18,
             "name": "se muestra el numero de contacto del axuliar",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:50"
+              "location": "src\\test\\steps\\assistants.step.ts:19"
             },
             "result": {
               "status": "passed",
-              "duration": 16158199
+              "duration": 61092999
             }
           },
           {
@@ -127,11 +127,11 @@
             "line": 19,
             "name": "se muestra el estado del auxiliar",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:78"
+              "location": "src\\test\\steps\\assistants.step.ts:23"
             },
             "result": {
               "status": "passed",
-              "duration": 14680699
+              "duration": 37310000
             }
           },
           {
@@ -140,11 +140,11 @@
             "line": 20,
             "name": "se muestra el correo del auxiliar",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:105"
+              "location": "src\\test\\steps\\assistants.step.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 13300199
+              "duration": 36045600
             }
           },
           {
@@ -153,11 +153,11 @@
             "line": 21,
             "name": "se muestra la foto de cada auxiliar",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:130"
+              "location": "src\\test\\steps\\assistants.step.ts:31"
             },
             "result": {
               "status": "passed",
-              "duration": 12605099
+              "duration": 34846099
             }
           },
           {
@@ -165,11 +165,15 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23421800
+              "duration": 48560099
             }
           }
         ],
         "tags": [
+          {
+            "name": "@consulta-auxiliares",
+            "line": 1
+          },
           {
             "name": "@Escenario03",
             "line": 13
@@ -182,7 +186,12 @@
     "line": 2,
     "keyword": "Feature",
     "name": "Consulta de Auxiliares por el rol DIRECTIVO",
-    "tags": [],
+    "tags": [
+      {
+        "name": "@consulta-auxiliares",
+        "line": 1
+      }
+    ],
     "uri": "src\\resources\\features\\rol-directivo\\consulta-auxiliares.feature"
   }
 ]
