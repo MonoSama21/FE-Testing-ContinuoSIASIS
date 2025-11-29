@@ -1,3 +1,4 @@
+@test
 Feature: Edicion de Datos Personales por Rol Directivo
     Como usuario con rol de Directivo
     Quiero poder editar mis datos personales
