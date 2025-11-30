@@ -38,9 +38,8 @@ Then('aparece un modal indicando que las credenciales son incorrectas', async fu
     await loginPage.validateModalInvalidCredentialsIsVisible();
 });
 
-Then('verifico que he salido correctamente al ver la página de login', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+Then('verifico que he salido correctamente al ver la página de login', async function () {
+    await loginPage.validateModalLoginOptionsRoleIsVisible();
 });
 
 

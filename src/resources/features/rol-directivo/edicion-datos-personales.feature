@@ -10,9 +10,28 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "DIRECTIVO"
 
-Scenario: Editar perfil con el rol Directivo
-    When Estoy en la página de edición de perfil
-    And Edito mis datos personales con los valores aleatorios
-    Then Verifico que se han guardado los cambios
-    And Restauro los datos originales
+@Escenario06
+Scenario: Validar que el rol Directivo puede editar su informacion personal
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el boton de Editar Datos
+    And edito mi informacion personal
+    And guardo los cambios realizados
+    Then verifico que se han guardado los cambios
+    And restauro los datos originales
     Then verifico que los datos originales son correctos
+
+@Escenario07
+Scenario: Validar que el rol Directivo puede editar su informacion personal mas de una vez
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el boton de Editar Datos
+    And edito mi informacion personal
+    And guardo los cambios realizados
+    Then verifico que se han guardado los cambios
+    #And restauro los datos originales
+    #Then verifico que los datos originales son correctos
+
+Scenario: Validar que el rol Directivo puede editar su informacion del usuario 
+
+Scenario: Validar que el rol Directivo puede editar su foto de perfil con foto de peso admitible 
+
+Scenario: Validar que el rol Directivo puede editar su foto de perfil con foto de peso no admitible (mayor a 5MB)

@@ -136,4 +136,16 @@ export class LoginPage {
         await this.page.waitForLoadState('networkidle');
         await this.loginLocator.messageWelcomeLogin.isVisible(); 
     }
+
+    async validateModalLoginOptionsRoleIsVisible(){
+        await this.page.waitForLoadState('networkidle');
+        await this.loginLocator.modalInvalidCredentials.isVisible();
+        await this.loginLocator.optionAssistant.isVisible();
+        await this.loginLocator.optionExecutive.isVisible();
+        await this.loginLocator.optionOther.isVisible();
+        await this.loginLocator.optionResponsible.isVisible();
+        await this.loginLocator.optionSecondarySchoolTutorTeacher.isVisible();
+        await this.loginLocator.optionTeacherPrimary.isVisible();
+        console.log("Se valida correctamente el direccionamiento al Login al momento de cerrar sesión");
+    }
 };

@@ -28,11 +28,15 @@ export class DashboardLocator {
         return this.page.getByRole('button', { name: 'Registros' }).first();
     }
 
-    get iconDeploymentMenu(){
-        return this.page.locator("#despliegue-icon");
+    get iconDeploymentMenu() {
+        return this.page.locator('#despliegue-icon');
     }
 
     get btnLogOut(){
-        return this.page.locator('//*[@id="Menu-deplegable"]/li');
+        return this.page.getByText('Cerrar Sesión', { exact: true });
+    }
+
+    get btnEditProfile(){
+        return this.page.getByText('Editar Perfil', { exact: true });
     }
 }

@@ -55,4 +55,8 @@ export class LoginLocator {
     get modalInvalidCredentials(){
         return this.page.locator('//div[@role="alert"]');
     }
+
+    get modalLoginOptionsRole(){
+        return this.page.locator('/html/body/main/div');
+    }
 }

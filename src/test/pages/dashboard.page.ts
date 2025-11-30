@@ -1,5 +1,6 @@
 import { expect, Page } from '@playwright/test';
 import { DashboardLocator } from '../locators/dashboard.locator';
+import { pageFixture } from '../utiles/pageFixture';
 
 export class DashboardPage {
 
@@ -44,9 +45,21 @@ export class DashboardPage {
     }
 
     async clickLogOut() {
-        await this.dashboardLocator.iconDeploymentMenu.click();
-        await this.dashboardLocator.btnLogOut.click();
-        console.log("✅ Se hizo click en el botón de Cerrar Sesión");
+        
+        //await this.dashboardLocator.optionsDashboard.waitFor({ state: 'visible' });     // Asegurar que el dashboard cargó
+        await this.dashboardLocator.iconDeploymentMenu.waitFor({ state: 'visible' }); // Asegurar que el ícono de despliegue esté visible
+        await this.dashboardLocator.iconDeploymentMenu.click();                         // Abrir el menú
+        await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visible
+        await this.dashboardLocator.btnLogOut.click();                                  // Clic en "Cerrar Sesión"
+        console.log("🔴 Sesión cerrada correctamente");
+    }
+
+    async clickEditProfile() {
+        await this.dashboardLocator.iconDeploymentMenu.waitFor({ state: 'visible' }); // Asegurar que el ícono de despliegue esté visible
+        await this.dashboardLocator.iconDeploymentMenu.click();                         // Abrir el menú
+        await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visibl
+        await this.dashboardLocator.btnEditProfile.click();                             // Clic en "Editar Perfil"
+        console.log("✅ Se hizo click en Editar Perfil");
     }
 
 }
