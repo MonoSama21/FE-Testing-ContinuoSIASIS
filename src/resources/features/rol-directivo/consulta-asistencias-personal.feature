@@ -17,12 +17,12 @@ Scenario Outline: Validar que el rol de DIRECTIVO puede ver los registros de asi
     And selecciono un usuario
     And selecciono un mes superior a Junio
     And doy click en el boton de Buscar
-    #Then se muestra una tabla con las asistencias del personal seleccionado
+    Then se muestra una tabla con las asistencias del personal seleccionado
 
     Examples:
       | tipo_personal           |
       | Profesor de Primaria    |
-      #| Profesor de Secundaria  |
-      #| Auxiliar                |
-      #| Personal Administrativo |
+      | Profesor de Secundaria  |
+      | Auxiliar                |
+      | Personal Administrativo |
 

@@ -47,4 +47,8 @@ export class PersonalRecordsLocator {
     get btnSearch(){
         return this.page.getByRole('button', { name: 'Buscar' });
     }
+
+    get tableRecords(){
+        return this.page.locator('//table[@class="w-full"]');
+    }
 }

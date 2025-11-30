@@ -85,4 +85,9 @@ export class PersonalRecordsPage {
         await this.personalRecordsLocator.btnSearch.click();
     }
 
+    async validateAttendanceTableDisplayed(){
+        await this.personalRecordsLocator.tableRecords.isVisible();
+        console.log("✔ Tabla de asistencias mostrada");
+    }
+
 }

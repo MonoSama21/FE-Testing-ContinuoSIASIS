@@ -21,3 +21,7 @@ When('selecciono un mes superior a Junio', async function () {
 When('doy click en el boton de Buscar', async function () {
     await personalRecordsPage.clickSearchButton();
 });
+
+Then('se muestra una tabla con las asistencias del personal seleccionado', async function () {
+    await personalRecordsPage.validateAttendanceTableDisplayed();
+});
