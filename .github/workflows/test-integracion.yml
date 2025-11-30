@@ -12,22 +12,48 @@ on:
         required: true
         type: string
 
+  schedule:
+    # Lunes a Viernes 8 AM — Tag diario
+    - cron: "0 13 * * 1-5"   # 13 UTC = 8AM Perú
+    # Sábado y Domingo 7 PM — Tag de fin de semana
+    - cron: "10 0 * * 6,0"    # 00 UTC = 7PM Perú
+
 jobs:
   Pruebas-FrontEnd-Integracion:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
-
     - uses: actions/checkout@v4
 
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
 
-    # ---------------------------------------------------------
-    # CORREO HTML INICIO DE PRUEBAS
-    # ---------------------------------------------------------
+    # =========================================================
+    # 📌 ASIGNAR TAG Y CORREO SEGÚN EL TIPO DE DISPARO
+    # =========================================================
+    - name: Detectar parámetros para ejecución automática o manual
+      id: params
+      run: |
+        if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+          echo "tag=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+          echo "correo=${{ github.event.inputs.correo }}" >> $GITHUB_OUTPUT
+        else
+          # Lunes a Viernes
+          if [[ $(date +%u) -lt 6 ]]; then
+            echo "tag=@DailyTest" >> $GITHUB_OUTPUT
+            echo "correo=2101010261@undc.edu.pe" >> $GITHUB_OUTPUT
+          else
+            # Sábado y domingo
+            echo "tag=@WeekendTest" >> $GITHUB_OUTPUT
+            echo "correo=2101010261@undc.edu.pe" >> $GITHUB_OUTPUT
+          fi
+        fi
+
+    # =========================================================
+    # CORREO INICIAL (HTML)
+    # =========================================================
     - name: Notificar inicio de ejecución
       uses: dawidd6/action-send-mail@v3
       with:
@@ -36,15 +62,13 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: "🔵 Pruebas iniciadas - FrontEnd Integración"
-        to: ${{ github.event.inputs.correo }}
+        to: ${{ steps.params.outputs.correo }}
         from: ${{ secrets.MAIL_FROM }}
         html_body: |
           <div style="font-family: Arial; padding: 20px;">
             <h2 style="color:#007bff;">🔵 Ejecución iniciada</h2>
             <p>Las pruebas de integración han comenzado.</p>
-            <p><strong>Tag ejecutado:</strong> <span style="color:#007bff;">${{ github.event.inputs.tag }}</span></p>
-            <br>
-            <p>📌 <i>Te avisaremos nuevamente cuando las pruebas finalicen.</i></p>
+            <p><strong>Tag ejecutado:</strong> <span style="color:#007bff;">${{ steps.params.outputs.tag }}</span></p>
           </div>
 
     - name: Install dependencies
@@ -53,22 +77,19 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    # Ejecutar pruebas
     - name: Run Playwright tests by tag
       id: run_tests
       run: |
-        npm test -- --tags="${{ github.event.inputs.tag }}"
+        npm test -- --tags="${{ steps.params.outputs.tag }}"
         echo "resultado=$?" >> $GITHUB_OUTPUT
       continue-on-error: true
 
-    # Generar reporte
     - name: Generate report
       run: npm run report
 
     - name: List target directory
       run: ls -R target
 
-    # Subir artefacto
     - uses: actions/upload-artifact@v4
       if: always()
       with:
@@ -76,16 +97,14 @@ jobs:
         path: target/
         retention-days: 30
 
-    # ---------------------------------------------------------
-    # COMPRIMIR REPORTE PARA ENVIARLO POR CORREO
-    # ---------------------------------------------------------
+    # Comprimir reporte
     - name: Comprimir reporte
       if: always()
       run: zip -r reporte.zip target/
 
-    # ---------------------------------------------------------
-    # CORREO HTML FINAL CON RESUMEN + ZIP ADJUNTO
-    # ---------------------------------------------------------
+    # =========================================================
+    # CORREO FINAL CON REPORTE HTML + ZIP
+    # =========================================================
     - name: Notificar fin de ejecución y adjuntar reporte
       if: always()
       uses: dawidd6/action-send-mail@v3
@@ -95,7 +114,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: "🟢 Pruebas finalizadas - FrontEnd Integración"
-        to: ${{ github.event.inputs.correo }}
+        to: ${{ steps.params.outputs.correo }}
         from: ${{ secrets.MAIL_FROM }}
         html_body: |
           <div style="font-family: Arial; padding: 20px;">
@@ -104,7 +123,7 @@ jobs:
             <h2 style="color:#28a745;">🟢 Pruebas Finalizadas</h2>
 
             <p><strong>Tag ejecutado:</strong> 
-              <span style="color:#28a745;">${{ github.event.inputs.tag }}</span>
+              <span style="color:#28a745;">${{ steps.params.outputs.tag }}</span>
             </p>
 
             <h3 style="color:#333;">📊 Resultado:</h3>
@@ -116,9 +135,7 @@ jobs:
             </p>
 
             <h3>📄 Reporte:</h3>
-            <p>
-              Puedes ver el reporte completo en el artefacto adjunto o descargar el ZIP enviado.
-            </p>
+            <p>Se adjunta el reporte comprimido y también puedes verlo como artefacto en GitHub Actions.</p>
 
             <p>
               🔗 <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" 

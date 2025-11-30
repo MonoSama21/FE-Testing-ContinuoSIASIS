@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario con el rol de Directivo\n    Quiero poder consultar todos los personales administrativos disponibles\n    Para poder visualizar sus datos",
+    "description": "    Como usuario con rol de Directivo\n    Quiero poder consultar las asistencias de cualquier personal del colegio(Directivo, Profesor de Primaria, Profesor de Secundaria, Auxiliar o Personal Administrativo)\n    Para poder evaluar el desempeño del personal del colegio",
     "elements": [
       {
         "description": "",
-        "id": "consulta-de-personal-administrativo;validar-que-el-rol-directivo-puede-consultar-el-personal-administrativo",
-        "keyword": "Scenario",
-        "line": 14,
-        "name": "Validar que el rol DIRECTIVO puede consultar el personal administrativo",
+        "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo;validar-que-el-rol-de-directivo-puede-ver-los-registros-de-asistencia-del-personal",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "Validar que el rol de DIRECTIVO puede ver los registros de asistencia del personal",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 126371999
+              "duration": 117463099
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1674761399
+              "duration": 970633100
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45660400
+              "duration": 57123399
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2068400099
+              "duration": 2069762700
             }
           },
           {
@@ -66,72 +66,85 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5201299
+              "duration": 8344399
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 15,
-            "name": "hago click en el apartado de \"Personal Administrativo\"",
+            "name": "hago click en el apartado de \"Registros de Personal\"",
             "match": {
               "location": "src\\test\\steps\\dashboard.step.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 5150211699
+              "duration": 2901995499
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "And ",
             "line": 16,
-            "name": "se muestra en pantalla la lista de personal administrativo disponibles",
+            "name": "en el campo tipo de personal selecciono un \"Profesor de Primaria\"",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:8"
+              "location": "src\\test\\steps\\personalRecords.step.ts:8"
             },
             "result": {
               "status": "passed",
-              "duration": 4943270800
+              "duration": 829198500
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 17,
-            "name": "se muestra los nombres y apellidos del personal administrativo",
+            "name": "selecciono un usuario",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:13"
+              "location": "src\\test\\steps\\personalRecords.step.ts:13"
             },
             "result": {
               "status": "passed",
-              "duration": 29695599
+              "duration": 3960617400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "selecciono un mes superior a Junio",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6244599
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 19,
-            "name": "se muestra el estado del personal administrativo",
+            "name": "doy click en el boton de Buscar",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:21"
+              "location": "src\\test\\steps\\personalRecords.step.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 41469499
+              "duration": 30613900
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
+            "keyword": "Then ",
             "line": 20,
-            "name": "se muestra la foto de cada personal administrativo",
+            "name": "se muestra una tabla con las asistencias del personal seleccionado",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:25"
+              "location": "src\\test\\steps\\personalRecords.step.ts:25"
             },
             "result": {
               "status": "passed",
-              "duration": 30433699
+              "duration": 4420500
             }
           },
           {
@@ -139,7 +152,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 17305000
+              "duration": 25254899
             }
           }
         ],
@@ -149,31 +162,541 @@
             "line": 1
           },
           {
-            "name": "@consulta-personal-administrativo",
+            "name": "@consulta-asistencias-personal",
             "line": 1
           },
           {
-            "name": "@Escenario04",
+            "name": "@Escenario05",
+            "line": 13
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo;validar-que-el-rol-de-directivo-puede-ver-los-registros-de-asistencia-del-personal",
+        "keyword": "Scenario Outline",
+        "line": 25,
+        "name": "Validar que el rol de DIRECTIVO puede ver los registros de asistencia del personal",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95120700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "estoy en la pagina de login",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1054222799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "selecciono el rol \"DIRECTIVO\"",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49680500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "ingreso mi nombre de usuario y contraseña validos",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2081110399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "accedo al sistema como \"DIRECTIVO\"",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6011699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "hago click en el apartado de \"Registros de Personal\"",
+            "match": {
+              "location": "src\\test\\steps\\dashboard.step.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2381310800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "en el campo tipo de personal selecciono un \"Profesor de Secundaria\"",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 830701499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "selecciono un usuario",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1451075600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "selecciono un mes superior a Junio",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7851699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "doy click en el boton de Buscar",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27556700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "se muestra una tabla con las asistencias del personal seleccionado",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4699300
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20694199
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@test",
+            "line": 1
+          },
+          {
+            "name": "@consulta-asistencias-personal",
+            "line": 1
+          },
+          {
+            "name": "@Escenario05",
+            "line": 13
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo;validar-que-el-rol-de-directivo-puede-ver-los-registros-de-asistencia-del-personal",
+        "keyword": "Scenario Outline",
+        "line": 26,
+        "name": "Validar que el rol de DIRECTIVO puede ver los registros de asistencia del personal",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95028900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "estoy en la pagina de login",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1015188600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "selecciono el rol \"DIRECTIVO\"",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40162299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "ingreso mi nombre de usuario y contraseña validos",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2053090900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "accedo al sistema como \"DIRECTIVO\"",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3336900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "hago click en el apartado de \"Registros de Personal\"",
+            "match": {
+              "location": "src\\test\\steps\\dashboard.step.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4036620900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "en el campo tipo de personal selecciono un \"Auxiliar\"",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 849297900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "selecciono un usuario",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1427477399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "selecciono un mes superior a Junio",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4593600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "doy click en el boton de Buscar",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24846799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "se muestra una tabla con las asistencias del personal seleccionado",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1852800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20739599
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@test",
+            "line": 1
+          },
+          {
+            "name": "@consulta-asistencias-personal",
+            "line": 1
+          },
+          {
+            "name": "@Escenario05",
+            "line": 13
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo;validar-que-el-rol-de-directivo-puede-ver-los-registros-de-asistencia-del-personal",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Validar que el rol de DIRECTIVO puede ver los registros de asistencia del personal",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 90332900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "estoy en la pagina de login",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1098058499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "selecciono el rol \"DIRECTIVO\"",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25827100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "ingreso mi nombre de usuario y contraseña validos",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3223393699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "accedo al sistema como \"DIRECTIVO\"",
+            "match": {
+              "location": "src\\test\\steps\\login.step.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3580400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "hago click en el apartado de \"Registros de Personal\"",
+            "match": {
+              "location": "src\\test\\steps\\dashboard.step.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3169911800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "en el campo tipo de personal selecciono un \"Personal Administrativo\"",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 822812000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "selecciono un usuario",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1962229399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "selecciono un mes superior a Junio",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5415399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "doy click en el boton de Buscar",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40406300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "se muestra una tabla con las asistencias del personal seleccionado",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3269499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17040600
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@test",
+            "line": 1
+          },
+          {
+            "name": "@consulta-asistencias-personal",
+            "line": 1
+          },
+          {
+            "name": "@Escenario05",
             "line": 13
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "consulta-de-personal-administrativo",
+    "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo",
     "line": 2,
     "keyword": "Feature",
-    "name": "Consulta de Personal administrativo",
+    "name": "Consulta de Aasistencias de Personal por el rol DIRECTIVO",
     "tags": [
       {
         "name": "@test",
         "line": 1
       },
       {
-        "name": "@consulta-personal-administrativo",
+        "name": "@consulta-asistencias-personal",
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-directivo\\consulta-personal-administrativo.feature"
+    "uri": "src\\resources\\features\\rol-directivo\\consulta-asistencias-personal.feature"
   }
 ]
