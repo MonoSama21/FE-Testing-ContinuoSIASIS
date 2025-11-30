@@ -34,6 +34,7 @@ export class PersonalRecordsLocator {
 
 
     //LOCATORS PARA MES A CONSUTLAR
+    
     get selectMonth(){
         return this.page.locator('//select').nth(1);
     }

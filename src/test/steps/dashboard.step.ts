@@ -12,3 +12,12 @@ When('hago click en el apartado de {string}', async function (option) {
     dashboardPage = new DashboardPage(pageFixture.page);
     await dashboardPage.clickOptionDashboard(option);
 });
+
+
+When('realizo el cierre de sesion', async function () {
+    dashboardPage = new DashboardPage(pageFixture.page);
+    await pageFixture.page.pause();
+    await dashboardPage.clickLogOut();
+
+});
+

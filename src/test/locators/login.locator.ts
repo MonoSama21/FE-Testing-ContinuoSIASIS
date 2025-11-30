@@ -53,6 +53,6 @@ export class LoginLocator {
     }
 
     get modalInvalidCredentials(){
-        return this.page.locator('//h1[contains(text(), "¡Hola!")]');
+        return this.page.locator('//div[@role="alert"]');
     }
 }

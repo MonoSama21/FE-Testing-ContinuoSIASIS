@@ -43,4 +43,10 @@ export class DashboardPage {
         console.log("✅ La respuesta de la API es 200 OK");
     }
 
+    async clickLogOut() {
+        await this.dashboardLocator.iconDeploymentMenu.click();
+        await this.dashboardLocator.btnLogOut.click();
+        console.log("✅ Se hizo click en el botón de Cerrar Sesión");
+    }
+
 }

@@ -1,5 +1,6 @@
 import { expect, Page } from '@playwright/test';
 import { LoginLocator } from '../locators/login.locator';
+import { pageFixture } from '../utiles/pageFixture';
 
 export class LoginPage {
 
@@ -70,14 +71,22 @@ export class LoginPage {
     }
 
     async fillCredentialsInvalidate() {
-        await this.fillUsername("Invalido");
-        await this.fillPassword("Invalido");
+        let username = process.env.CREDENTIALS_INVALIDS_USERNAME || '';
+        let password = process.env.CREDENTIALS_INVALIDS_PASSWORD || '';
+        await this.fillUsername(username);
+        await this.fillPassword(password);
         await this.clickLoginButton();
     }
 
     async validateModalInvalidCredentialsIsVisible() {
         await this.page.waitForTimeout(2000);
         expect(await this.loginLocator.modalInvalidCredentials).toBeVisible();
+        const texto = await this.loginLocator.modalInvalidCredentials.textContent();
+        if (texto === 'Usuario•Credenciales inválidas') {
+            console.log('El modal de credenciales inválidas se muestra correctamente.');
+        } else {
+            throw new Error('El texto del modal no es el esperado.');
+        }
     }
 
     async validateImgLogoIsVisible() {

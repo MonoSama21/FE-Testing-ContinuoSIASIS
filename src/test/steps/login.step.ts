@@ -30,9 +30,17 @@ Then('accedo al sistema como {string}', async function (string) {
 });
 
 When('ingreso mi nombre de usuario y contraseña invalidos', async function () {
+    await loginPage.validateImgLogoIsVisible();
     await loginPage.fillCredentialsInvalidate();
 });
 
 Then('aparece un modal indicando que las credenciales son incorrectas', async function () {
     await loginPage.validateModalInvalidCredentialsIsVisible();
 });
+
+Then('verifico que he salido correctamente al ver la página de login', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+});
+
+

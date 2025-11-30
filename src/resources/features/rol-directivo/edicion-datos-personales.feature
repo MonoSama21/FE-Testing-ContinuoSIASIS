@@ -11,8 +11,8 @@ Background:
     And accedo al sistema como "DIRECTIVO"
 
 Scenario: Editar perfil con el rol Directivo
-    #When Estoy en la página de edición de perfil
-    #And Edito mis datos personales con los valores aleatorios
-    #Then Verifico que se han guardado los cambios
-    #And Restauro los datos originales
-    #Then verifico que los datos originales son correctos
+    When Estoy en la página de edición de perfil
+    And Edito mis datos personales con los valores aleatorios
+    Then Verifico que se han guardado los cambios
+    And Restauro los datos originales
+    Then verifico que los datos originales son correctos

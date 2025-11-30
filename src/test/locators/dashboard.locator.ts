@@ -27,4 +27,12 @@ export class DashboardLocator {
     get optionPersonalRecords(){
         return this.page.getByRole('button', { name: 'Registros' }).first();
     }
+
+    get iconDeploymentMenu(){
+        return this.page.locator("#despliegue-icon");
+    }
+
+    get btnLogOut(){
+        return this.page.locator('//*[@id="Menu-deplegable"]/li');
+    }
 }
