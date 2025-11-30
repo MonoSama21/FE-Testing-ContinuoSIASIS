@@ -37,47 +37,24 @@ export class PersonalRecordsPage {
     }
 
     async selectRandomPersonal() {
-
-        // 1. Abrir dropdown
-        await this.personalRecordsLocator.dropdownPersonal.click();
-
-        // 2. Esperar que las opciones aparezcan
-        await this.personalRecordsLocator.dropdownListItems.first().waitFor();
-
-        // 3. Contar opciones
-        const count = await this.personalRecordsLocator.dropdownListItems.count();
+        await this.personalRecordsLocator.dropdownPersonal.click();                 // 1. Abrir dropdown
+        await this.personalRecordsLocator.dropdownListItems.first().waitFor();      // 2. Esperar que las opciones aparezcan
+        const count = await this.personalRecordsLocator.dropdownListItems.count();  // 3. Contar opciones
         console.log("➤ Número de opciones encontradas:", count);
         if (count === 0) {
             throw new Error("No se encontraron opciones en el dropdown.");
         }
-
-        // 4. Generar índice aleatorio
-        const randomIndex = Math.floor(Math.random() * count);
-
-        // 5. Capturar locator de la opción
-        const option = this.personalRecordsLocator.dropdownListItems.nth(randomIndex);
-
-        // 6. Obtener el nombre
-        const selectedName = await option.locator('.font-medium').innerText();
-
-        // 7. Imprimir en consola
-        console.log("➤ Opción seleccionada:", selectedName);
-
-        // 8. Click a la opción
-        await option.click();
-
-        // 9. Devolver el nombre si lo quieres usar luego
-        return selectedName;
+        const randomIndex = Math.floor(Math.random() * count);                         // 4. Generar índice aleatorio
+        const option = this.personalRecordsLocator.dropdownListItems.nth(randomIndex); // 5. Capturar locator de la opción
+        const selectedName = await option.locator('.font-medium').innerText();         // 6. Obtener el nombre
+        console.log("➤ Opción seleccionada:", selectedName);                          // 7. Imprimir en consola
+        await option.click();         // 8. Click a la opción
+        return selectedName;          // 9. Devolver el nombre para validaciones futuras
     }
 
     async selectRandomMonthGreaterThanJune() {
-
-        // Valores permitidos
-        const allowedValues: string[] = ["7", "8", "9", "10", "11"];
-
-        // Elegir uno aleatorio
-        const randomValue = allowedValues[Math.floor(Math.random() * allowedValues.length)];
-
+        const allowedValues: string[] = ["7", "8", "9", "10", "11"];                            // Valores permitidos
+        const randomValue = allowedValues[Math.floor(Math.random() * allowedValues.length)];    // Elegir uno aleatorio
         await this.personalRecordsLocator.selectMonth.selectOption(randomValue);
     }
 

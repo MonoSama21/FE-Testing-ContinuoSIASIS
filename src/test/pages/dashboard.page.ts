@@ -1,5 +1,6 @@
 import { expect, Page } from '@playwright/test';
 import { DashboardLocator } from '../locators/dashboard.locator';
+import { pageFixture } from '../utiles/pageFixture';
 
 export class DashboardPage {
 
@@ -41,6 +42,24 @@ export class DashboardPage {
         const response = await this.page.request.get("https://siasis-dev-ins2.vercel.app/auxiliares?_rsc=8e1aq");
         expect(response.status()).toBe(200);
         console.log("✅ La respuesta de la API es 200 OK");
+    }
+
+    async clickLogOut() {
+        
+        //await this.dashboardLocator.optionsDashboard.waitFor({ state: 'visible' });     // Asegurar que el dashboard cargó
+        await this.dashboardLocator.iconDeploymentMenu.waitFor({ state: 'visible' }); // Asegurar que el ícono de despliegue esté visible
+        await this.dashboardLocator.iconDeploymentMenu.click();                         // Abrir el menú
+        await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visible
+        await this.dashboardLocator.btnLogOut.click();                                  // Clic en "Cerrar Sesión"
+        console.log("🔴 Sesión cerrada correctamente");
+    }
+
+    async clickEditProfile() {
+        await this.dashboardLocator.iconDeploymentMenu.waitFor({ state: 'visible' }); // Asegurar que el ícono de despliegue esté visible
+        await this.dashboardLocator.iconDeploymentMenu.click();                         // Abrir el menú
+        await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visibl
+        await this.dashboardLocator.btnEditProfile.click();                             // Clic en "Editar Perfil"
+        console.log("✅ Se hizo click en Editar Perfil");
     }
 
 }

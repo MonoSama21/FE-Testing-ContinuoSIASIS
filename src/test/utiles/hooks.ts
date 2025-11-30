@@ -19,7 +19,7 @@ Before(async function () {
   pageFixture.page = page;
 
   await page.setViewportSize({
-    width: 1600,
+    width: 1500,
     height: 800,
   });
 });
