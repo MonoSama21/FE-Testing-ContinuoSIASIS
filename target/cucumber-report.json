@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario con rol de Directivo\n    Quiero que el rol de Auxiliar no pueda registrar su asistencia un día no laborable\n    Para que no exista confusión con registros de asistencia",
+    "description": "    Como usuario con rol de Directivo\n    Quiero que el rol de Profesor de primaria no pueda registrar su asistencia un día no laborable\n    Para que no exista confusión con registros de asistencia",
     "elements": [
       {
         "description": "",
-        "id": "indisponibilidad-de-registrar-asistencia-en-día-no-laborable;validar-que-no-se-puede-registrar-la-asistencia-del-rol-auxiliar-un-día-no-laborable",
+        "id": "indisponibilidad-del-rol-profesor-de-primaria-para-registrar-asistencia-en-día-no-laborable;validar-que-no-se-puede-registrar-la-asistencia-del-rol-profesor-de-primaria-un-día-no-laborable",
         "keyword": "Scenario",
         "line": 14,
-        "name": "Validar que no se puede registrar la asistencia del rol Auxiliar un día no laborable",
+        "name": "Validar que no se puede registrar la asistencia del rol Profesor de Primaria un día no laborable",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 258375600
+              "duration": 260383599
             }
           },
           {
@@ -27,20 +27,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1199365600
+              "duration": 1097646899
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 9,
-            "name": "selecciono el rol \"AUXILIAR\"",
+            "name": "selecciono el rol \"PROFESOR_PRIMARIA\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 142796900
+              "duration": 148550400
             }
           },
           {
@@ -53,20 +53,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2171970600
+              "duration": 3512396499
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 11,
-            "name": "accedo al sistema como \"AUXILIAR\"",
+            "name": "accedo al sistema como \"PROFESOR_PRIMARIA\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 15569999
+              "duration": 23968300
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2796100
+              "duration": 3860099
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 9700787200
+              "duration": 9752992599
             }
           },
           {
@@ -104,8 +104,9 @@
               "location": "src\\test\\steps\\dashboard.step.ts:42"
             },
             "result": {
-              "status": "passed",
-              "duration": 14855900
+              "status": "failed",
+              "duration": 5719162400,
+              "error_message": "locator.textContent: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//p[@class=\"text-gray-800 font-medium leading-tight\"]')\u001b[22m\n\n    at DashboardPage.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:84:68)\n    at step (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:33:23)\n    at Object.next (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:14:53)\n    at C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:8:71\n    at __awaiter (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:4:12)\n    at DashboardPage.validateNonWorkingDayMessage (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:188:16)\n    at World.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:45:25)\n    at step (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:33:23)\n    at Object.next (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:14:53)\n    at C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:8:71\n    at __awaiter (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:4:12)\n    at World.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:115:12)"
             }
           },
           {
@@ -113,7 +114,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 97417600
+              "duration": 55057000
             }
           }
         ],
@@ -123,23 +124,23 @@
             "line": 1
           },
           {
-            "name": "@Escenario08",
+            "name": "@Escenario09",
             "line": 13
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "indisponibilidad-de-registrar-asistencia-en-día-no-laborable",
+    "id": "indisponibilidad-del-rol-profesor-de-primaria-para-registrar-asistencia-en-día-no-laborable",
     "line": 2,
     "keyword": "Feature",
-    "name": "Indisponibilidad de registrar asistencia en día no laborable",
+    "name": "Indisponibilidad del rol Profesor de Primaria para registrar asistencia en día no laborable",
     "tags": [
       {
         "name": "@WeekendTest",
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-auxiliar\\indisponibilidad-asistencia-no-laborable-auxiliar.feature"
+    "uri": "src\\resources\\features\\rol-profesor-primaria\\indisponibilidad-asistencia-no-laborable-profesor-primaria.feature"
   }
 ]
