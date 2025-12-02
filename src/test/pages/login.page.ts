@@ -70,6 +70,27 @@ export class LoginPage {
         }
         await this.fillUsername(username);
         await this.fillPassword(password);
+        
+        // Validar que ambos campos tengan el valor correcto antes de hacer click
+        const usernameValue = await this.loginLocator.inputUsername.inputValue();
+        const passwordValue = await this.loginLocator.inputPassword.inputValue();
+        
+        if (usernameValue !== username || passwordValue !== password) {
+            console.log(`⚠️ Los campos no contienen los valores esperados. Reintentando...`);
+            await this.loginLocator.inputUsername.clear();
+            await this.loginLocator.inputPassword.clear();
+            await this.fillUsername(username);
+            await this.fillPassword(password);
+            
+            // Validar nuevamente
+            const usernameValueRetry = await this.loginLocator.inputUsername.inputValue();
+            const passwordValueRetry = await this.loginLocator.inputPassword.inputValue();
+            
+            if (usernameValueRetry !== username || passwordValueRetry !== password) {
+                throw new Error(`❌ No se pudo completar correctamente los campos de login después de reintentar.`);
+            }
+        }
+        
         await this.clickLoginButton();
         console.log(`Ingreso usuario: ${username} y contraseña: ${password}`);
     }
@@ -96,6 +117,9 @@ export class LoginPage {
     async validateImgLogoIsVisible() {
         await this.page.waitForTimeout(2000);
         expect(await this.loginLocator.imgSchoolLogin).toBeVisible(); 
+        await this.loginLocator.inputPassword.isEnabled();
+        await this.loginLocator.inputPassword.isEnabled();
+        await this.loginLocator.btnLogin.isEnabled();
     }
 
     async clickRoleOption(optionRole: string) {
