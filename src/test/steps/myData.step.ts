@@ -19,13 +19,11 @@ When('solo se pueden editar los campos de celular y correo Electrónico', async 
 });
 
 When('edito los campos disponibles', async function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+    await myDataPage.editDataPhoneAndEmail();
 });
 
 Then('verifico que se han guardado los cambios asi como el mensaje de confirmacion', async function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+    await myDataPage.validateModalSaveChangesIsVisible();
 });
 
 When('edito mi informacion personal', async function () {

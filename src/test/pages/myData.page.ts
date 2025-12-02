@@ -18,6 +18,10 @@ export class MyDataPage {
     //DATOS ORIGINALES PARA EL ROL PROFESOR_PRIMARIA
     readonly ORIGINAL_PHONE_PROFESOR_PRIMARIA = "946879371";
     readonly ORIGINAL_EMAIL_PROFESOR_PRIMARIA = "Profesora_mary@hotmail.com";
+
+    //DATOS ORIGINALES PARA EL ROL AUXILIAR
+    readonly ORIGINAL_PHONE_AUXILIAR = "950034094";
+    readonly ORIGINAL_EMAIL_AUXILIAR = "Bicagonzales168@gmail.com";
     
     generatedName: string = "";
     generatedLastName: string = "";
@@ -193,6 +197,15 @@ export class MyDataPage {
         await this.myDatLocator.inputPhone.isVisible();
         await this.myDatLocator.inputEmail.isVisible();
         console.log("✔ Se validó que los campos Celular y Correo Electrónico son editables");
+    }
+
+    async editDataPhoneAndEmail(){
+        const randomPhone = faker.helpers.replaceSymbols("9########");
+        const randomEmail = faker.internet.email();
+        await this.myDatLocator.inputPhone.fill(randomPhone);
+        await this.myDatLocator.inputEmail.fill(randomEmail);
+        console.log("✅ Se editó el número de teléfono correctamente con:", randomPhone);
+        console.log("✅ Se editó el correo electrónico correctamente con:", randomEmail);
     }
 
 };
