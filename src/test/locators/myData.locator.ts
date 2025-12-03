@@ -106,6 +106,16 @@ export class MyDataLocator {
         return this.page.locator("//label[contains(.,'Nombre de Usuario')]/div/span");
     }
 
-    
+    get lblClassroomAssigned(){
+        return this.page.locator("//label[contains(.,'Nivel')]/div/span");
+    }
+
+    get lblGradeAssigned(){
+        return this.page.locator("//label[contains(.,'Grado')]/div/span");
+    }
+
+    get lblSectionAssigned(){
+        return this.page.locator("//label[contains(.,'Sección')]/div/span");
+    }
 
 }

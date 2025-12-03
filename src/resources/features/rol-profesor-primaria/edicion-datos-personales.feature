@@ -10,13 +10,13 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "PROFESOR_PRIMARIA"
 
-@Escenario13
+@Escenario139
 Scenario: Validar que el rol Profesor de Primaria puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
-    And doy click en el boton de Editar Datos
-    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico
+    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto y Celular
+    And se muestra los datos de contacto como celular y correo Electrónico
+    And se muestra la informacion de usuario como nombre de usuario
     And se muestra los datos del aula asignada 
-    And también se muestra el nombre de usuario
 
 @Escenario14
 Scenario: Validar que el rol Profesor de Primaria puede editar su informacion personal

@@ -89,3 +89,7 @@ Then('se muestra los datos de contacto como celular y correo Electrónico', asyn
 Then('se muestra la informacion de usuario como nombre de usuario', async function () {
     await myDataPage.validateUserInformation();
 });
+
+Then('se muestra los datos del aula asignada', async function () {
+    await myDataPage.validateClassroomInformation();
+});

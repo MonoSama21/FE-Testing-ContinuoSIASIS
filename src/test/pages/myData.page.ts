@@ -233,4 +233,24 @@ export class MyDataPage {
         console.log("✅ Se editó el correo electrónico correctamente con:", randomEmail);
     }
 
+    async validateClassroomInformation(){
+        await this.myDatLocator.lblClassroomAssigned.isVisible();
+        const classroom = await this.myDatLocator.lblClassroomAssigned.textContent();
+        expect(classroom?.trim()).not.toBe('');
+        expect(classroom?.trim()).toBeTruthy();
+        console.log("✔ Se validó que el campo Aula Asignada es visible y contiene:", classroom?.trim());
+        
+        await this.myDatLocator.lblGradeAssigned.isVisible();
+        const grade = await this.myDatLocator.lblGradeAssigned.textContent();
+        expect(grade?.trim()).not.toBe('');
+        expect(grade?.trim()).toBeTruthy();
+        console.log("✔ Se validó que el campo Grado Asignado es visible y contiene:", grade?.trim());
+        
+        await this.myDatLocator.lblSectionAssigned.isVisible();
+        const section = await this.myDatLocator.lblSectionAssigned.textContent();
+        expect(section?.trim()).not.toBe('');
+        expect(section?.trim()).toBeTruthy();
+        console.log("✔ Se validó que el campo Sección Asignada es visible y contiene:", section?.trim());
+    }
+
 };
