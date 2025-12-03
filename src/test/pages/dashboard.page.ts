@@ -43,6 +43,10 @@ export class DashboardPage {
                 await this.dashboardLocator.optionPersonalRecords.click();
                 console.log("✅ Se hizo click en Registros de Personal");
                 break;
+            case "Comunicados":
+                await this.dashboardLocator.optionCommunications.click();
+                console.log("✅ Se hizo click en Comunicados");
+                break;
             default:
                 console.log(`❌ Opción no reconocida: ${option}`);
                 break;

@@ -13,17 +13,13 @@ Background:
 @test @comunicados @registro
 Scenario: Registrar un comunicado exitosamente con todos los campos completos
     When hago click en el boton "Registrar Comunicado"
-    And completo el formulario de comunicado con los siguientes datos:
-        | Campo              | Valor                                           |
-        | Titulo             | Comunicado de período vacacional 2025           |
-        | Contenido          | Se informa que el período vacacional será...    |
-        | Fecha Inicio       | fecha_futura:5                                  |
-        | Fecha Conclusion   | fecha_futura:15                                 |
+    And completo los campos de fecha de inicio y fecha de conclusión con una fecha mayor a la actual
+    And completo los campos de titulo y Contenido                            
     And adjunto una imagen al comunicado
     And visualizo la vista previa del comunicado
     Then la vista previa muestra correctamente el titulo, contenido y fecha
     When confirmo el registro del comunicado
-    Then el sistema muestra un mensaje de exito "Comunicado registrado correctamente"
+    Then el sistema muestra un mensaje de exito "¡Comunicado Registrado!"
     And el comunicado aparece en la lista con estado "Pendiente"
 
 # @test @comunicados @registro
