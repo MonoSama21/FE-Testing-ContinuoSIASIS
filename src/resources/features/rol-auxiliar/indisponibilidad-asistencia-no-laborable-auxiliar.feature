@@ -1,5 +1,5 @@
 @WeekendTest
-Feature: Indisponibilidad de registrar asistencia en día no laborable
+Feature: Indisponibilidad del rol Auxiliar para registrar asistencia en día no laborable
     Como usuario con rol de Directivo
     Quiero que el rol de Auxiliar no pueda registrar su asistencia un día no laborable
     Para que no exista confusión con registros de asistencia

@@ -15,6 +15,21 @@ export class MyDataPage {
     readonly ORIGINAL_GENDER_DIRECTIVO   = "Femenino";
     readonly ORIGINAL_DNI_DIRECTIVO      = "15430124";
 
+    //DATOS ORIGINALES PARA EL ROL PROFESOR_PRIMARIA
+    readonly ORIGINAL_PHONE_PROFESOR_PRIMARIA = "946879371";
+    readonly ORIGINAL_EMAIL_PROFESOR_PRIMARIA = "Profesora_mary@hotmail.com";
+
+    //DATOS ORIGINALES PARA EL ROL AUXILIAR
+    readonly ORIGINAL_PHONE_AUXILIAR = "950034094";
+    readonly ORIGINAL_EMAIL_AUXILIAR = "Bicagonzales168@gmail.com";
+    
+    generatedName: string = "";
+    generatedLastName: string = "";
+    firstGeneratedName: string = "";
+    firstGeneratedLastName: string = "";
+
+
+
     constructor(page: Page) {
         this.page = page;
         this.myDatLocator = new MyDataLocator(page);
@@ -26,16 +41,24 @@ export class MyDataPage {
     }
     
     async editDataName() {
-        const randomName = faker.person.firstName() + " " + faker.person.middleName();
-        await this.myDatLocator.inputNames.fill(randomName);
-        console.log("✅ Se editó el nombre correctamente con:", randomName);
+        const fullName = faker.person.firstName() + " " + faker.person.middleName();
+        this.generatedName = fullName;
+        this.firstGeneratedName = fullName.split(" ")[0]; // primer nombre
+
+        await this.myDatLocator.inputNames.fill(fullName);
+        console.log("✅ Nombre generado:", fullName);
+        console.log("➡ Primer nombre:", this.firstGeneratedName);
     }
 
-    async editDataLastName(){
-        const randomLastName = faker.person.lastName() + " " + faker.person.lastName();
-        await this.myDatLocator.inputLastNames.fill(randomLastName);
-        console.log("✅ Se editó el apellido correctamente con:", randomLastName);
-    } 
+    async editDataLastName() {
+        const fullLastName = faker.person.lastName() + " " + faker.person.lastName();
+        this.generatedLastName = fullLastName;
+        this.firstGeneratedLastName = fullLastName.split(" ")[0]; // primer apellido
+
+        await this.myDatLocator.inputLastNames.fill(fullLastName);
+        console.log("✅ Apellidos generados:", fullLastName);
+        console.log("➡ Primer apellido:", this.firstGeneratedLastName);
+    }
 
     async editDataPhone(){
         const randomPhone = faker.helpers.replaceSymbols("9########");
@@ -70,7 +93,45 @@ export class MyDataPage {
         } else {
             throw new Error('El texto del modal no es el esperado.');
         }
+        // Obtener texto del lbl del usuario
+        const lblUser = await this.myDatLocator.lblUserNamesAndLastNames.textContent();
+        const lblFormatted = lblUser?.trim();
+
+        console.log("📌 Texto mostrado en el perfil:", lblFormatted);
+        console.log("📌 Valores generados:", this.generatedName, this.generatedLastName);
+
+        // Validación
+        expect(lblFormatted).toContain(this.generatedName);
+        expect(lblFormatted).toContain(this.generatedLastName);
+
+        console.log("✔ Se validó que el nombre y apellido actualizados aparecen correctamente en el perfil.");
     }
+
+    async validateModalSaveChangesPhotoIsVisible(){  
+        await this.myDatLocator.modalSaveChangesPhoto.isVisible();
+        const texto = await this.myDatLocator.modalSaveChangesPhoto.textContent();
+        if (texto == "Se actualizo correctamente la Foto") {
+            console.log('El modal de foto actualizada correctamente se muestra correctamente.');
+        } else {
+            throw new Error('El texto del modal no es el esperado.');
+        }
+ 
+    }
+
+    async validateHeaderUserName() {
+        const headerText = await this.myDatLocator.lblHeaderUser.textContent();
+        const headerFormatted = headerText?.replace(/\s+/g, ' ').trim();
+
+        console.log("📌 Texto del header:", headerFormatted);
+        console.log("📌 Debe mostrar:", this.firstGeneratedName, this.firstGeneratedLastName);
+
+        await expect(this.myDatLocator.lblHeaderUser).toContainText(this.firstGeneratedName);
+        await expect(this.myDatLocator.lblHeaderUser).toContainText(this.firstGeneratedLastName);
+
+        console.log("✔ El header muestra correctamente el primer nombre y primer apellido.");
+    }
+
+    
 
     async restoreOriginalDataExecutive(){
         try {
@@ -80,11 +141,116 @@ export class MyDataPage {
             await this.myDatLocator.inputPhone.fill(this.ORIGINAL_PHONE_DIRECTIVO);
             await this.myDatLocator.inputDNI.fill(this.ORIGINAL_DNI_DIRECTIVO);
             await this.clickBtnSaveChanges();
+            await expect(this.myDatLocator.inputNames).not.toBeVisible();
+            await this.validateModalSaveChangesIsVisible();
 
         } catch (error) {
             throw new Error(`Error al restaurar los datos originales: ${error}`);
         }
-        
-
     }
+
+    async validateRestoreOriginalDataExecutive(){
+        try{
+            await expect(this.myDatLocator.lblNames).toHaveText(this.ORIGINAL_NAME_DIRECTIVO);
+            await expect(this.myDatLocator.lblLastNames).toHaveText(this.ORIGINAL_LASTNAME_DIRECTIVO);
+            await expect(this.myDatLocator.lblPhone).toHaveText(this.ORIGINAL_PHONE_DIRECTIVO);
+            await expect(this.myDatLocator.lblDNI).toHaveText(this.ORIGINAL_DNI_DIRECTIVO);
+            console.log("✔ Se validó correctamente los datos originales");
+        } catch (error){
+            throw new Error(`Error al validar los datos originales: ${error}`);
+        }
+    }
+
+    async clickBtnChangePhoto(){
+        await this.myDatLocator.btnChangePhoto.click();
+    }
+
+    async uploadingPhotoNotAllowed(){
+        await this.page.setInputFiles('#foto', 'src/resources/fixtures/img/pesado.jpg');
+    }
+
+    async uploadingPhotoAllowed(){
+        await this.page.setInputFiles('#foto', 'src/resources/fixtures/img/admitible2.jpg');
+    }
+
+    async validateModalPhotoNotAllowedIsVisible(){
+        const locator = this.myDatLocator.modalPhotoNotAllowed;
+
+        await expect(locator).toBeVisible();
+        await expect(locator).toContainText("La imagen no debe superar los 5MB");
+        
+        console.log("✔ El modal muestra correctamente el mensaje de límite de 5MB");
+    }
+
+    async validateDisabledBtnChangePhoto(){
+        await expect(this.myDatLocator.btnModalChangePhoto).toBeDisabled();
+        console.log("El boton de Cambiar Foto dentro del modal está deshabilitado")
+    }
+
+    async clickBtnModalChangePhoto(){
+        await this.myDatLocator.btnModalChangePhoto.isEnabled();
+        await this.myDatLocator.btnModalChangePhoto.click();
+    }
+
+    async clickBtnEnabledModalChangePhoto(){
+        await this.myDatLocator.btnModalChangePhotoEnabled.isEnabled();
+        await this.myDatLocator.btnModalChangePhotoEnabled.click();
+    }
+
+    async validatePersonalInformation(){
+        await this.myDatLocator.inputDNI.isVisible();
+        await this.myDatLocator.inputNames.isVisible();
+        await this.myDatLocator.inputLastNames.isVisible();
+        await this.myDatLocator.lblGender.isVisible();
+        await this.myDatLocator.imgPhoto.isVisible();
+        await this.myDatLocator.lblPhone.isVisible();
+        console.log("✔ Se validó que los campos DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico son visibles");
+    }
+
+    async validateContactInformation(){
+        await this.myDatLocator.lblPhone.isVisible();
+        await this.myDatLocator.lblEmail.isVisible();
+        console.log("✔ Se validó que los campos Celular y Correo Electrónico son visibles");
+    }
+
+    async validateUserInformation(){
+        await this.myDatLocator.lblUser.isVisible();
+        console.log("✔ Se validó que el campo Nombre de Usuario es visible");
+    }
+
+    async validateEditablePhoneAndEmail(){
+        await this.myDatLocator.inputPhone.isVisible();
+        await this.myDatLocator.inputEmail.isVisible();
+        console.log("✔ Se validó que los campos Celular y Correo Electrónico son editables");
+    }
+
+    async editDataPhoneAndEmail(){
+        const randomPhone = faker.helpers.replaceSymbols("9########");
+        const randomEmail = faker.internet.email();
+        await this.myDatLocator.inputPhone.fill(randomPhone);
+        await this.myDatLocator.inputEmail.fill(randomEmail);
+        console.log("✅ Se editó el número de teléfono correctamente con:", randomPhone);
+        console.log("✅ Se editó el correo electrónico correctamente con:", randomEmail);
+    }
+
+    async validateClassroomInformation(){
+        await this.myDatLocator.lblClassroomAssigned.isVisible();
+        const classroom = await this.myDatLocator.lblClassroomAssigned.textContent();
+        expect(classroom?.trim()).not.toBe('');
+        expect(classroom?.trim()).toBeTruthy();
+        console.log("✔ Se validó que el campo Aula Asignada es visible y contiene:", classroom?.trim());
+        
+        await this.myDatLocator.lblGradeAssigned.isVisible();
+        const grade = await this.myDatLocator.lblGradeAssigned.textContent();
+        expect(grade?.trim()).not.toBe('');
+        expect(grade?.trim()).toBeTruthy();
+        console.log("✔ Se validó que el campo Grado Asignado es visible y contiene:", grade?.trim());
+        
+        await this.myDatLocator.lblSectionAssigned.isVisible();
+        const section = await this.myDatLocator.lblSectionAssigned.textContent();
+        expect(section?.trim()).not.toBe('');
+        expect(section?.trim()).toBeTruthy();
+        console.log("✔ Se validó que el campo Sección Asignada es visible y contiene:", section?.trim());
+    }
+
 };

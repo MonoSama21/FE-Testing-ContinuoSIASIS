@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js src/resources/features --format json:target/cucumber-report.json",
-    "report": "node -e \"const reporter = require('cucumber-html-reporter'); reporter.generate({theme: 'bootstrap', jsonFile: 'target/cucumber-report.json', output: 'target/cucumber-report.html', reportSuiteAsScenarios: true, launchReport: false});\""
+    "report": "node -e \"const reporter = require('cucumber-html-reporter'); const os = require('os'); const options = {theme: 'hierarchy', jsonFile: 'target/cucumber-report.json', output: 'target/cucumber-report.html', reportSuiteAsScenarios: true, scenarioTimestamp: true, columnLayout: 1, metadata: {Browser: '🌐 Chrome (Chromium)', Platform: '💻 ' + os.platform() + ' ' + os.release(), 'Node Version': '🟢 ' + process.version, 'Test Environment': '🧪 DEV - SIASIS', 'App URL': '🔗 https://siasis-dev.vercel.app', 'Framework': '🤖 Playwright v1.57 + Cucumber v12.2', 'Repository': '📦 github.com/MonoSama21/Testing-ContinuoSIASIS', 'Branch': '🌿 develop', 'Executed by': '👤 QA Automation SSr Yrvin Pachas', 'Execution Date': '📅 ' + new Date().toLocaleString('es-PE', {timeZone: 'America/Lima', dateStyle: 'full', timeStyle: 'medium'}), 'Test Type': '🔄 Regresión + Funcional', 'CI/CD': '✅ GitHub Actions Ready'}, brandTitle: '🎯 SIASIS - Sistema de Testing Continuo con CI/CD', name: '📊 Reporte Ejecutivo de Pruebas Automatizadas', launchReport: false, storeScreenshots: false, noInlineScreenshots: false}; reporter.generate(options);\""
   },
   "keywords": [],
   "author": "",

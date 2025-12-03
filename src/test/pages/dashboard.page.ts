@@ -43,6 +43,10 @@ export class DashboardPage {
                 await this.dashboardLocator.optionPersonalRecords.click();
                 console.log("✅ Se hizo click en Registros de Personal");
                 break;
+            case "Comunicados":
+                await this.dashboardLocator.optionCommunications.click();
+                console.log("✅ Se hizo click en Comunicados");
+                break;
             default:
                 console.log(`❌ Opción no reconocida: ${option}`);
                 break;
@@ -66,6 +70,7 @@ export class DashboardPage {
     }
 
     async clickEditProfile() {
+        await this.dashboardLocator.iconDeploymentMenu.isEnabled();
         await this.dashboardLocator.iconDeploymentMenu.waitFor({ state: 'visible' }); // Asegurar que el ícono de despliegue esté visible
         await this.dashboardLocator.iconDeploymentMenu.click();                         // Abrir el menú
         await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visibl

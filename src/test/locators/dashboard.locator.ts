@@ -20,6 +20,10 @@ export class DashboardLocator {
         return this.page.getByRole('button', { name: 'Auxiliares' });
     }
 
+    get optionCommunications(){
+        return this.page.getByRole('button', { name: 'Comunicados' });
+    }
+
     get optionAdministrativeStaff(){
         return this.page.getByRole('button', { name: 'Personal Administrativo' });
     }
