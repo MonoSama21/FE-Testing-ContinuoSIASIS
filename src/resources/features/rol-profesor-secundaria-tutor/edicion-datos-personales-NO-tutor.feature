@@ -29,9 +29,17 @@ Scenario: ES-028 Validar que el rol Profesor de Secundaria puede editar el campo
     #And restauro los datos originales
     #Then verifico que los datos originales son correctos
 
-@Escenario29
-Scenario: ES-029 Validar que el rol Profesor de Secundaria puede editar la Contraseña
 
+@Escenario29
+Scenario: ES-029 Validar que el rol Profesor de Secundaria puede editar su contraseña
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el icono de cambio de contraseña
+    And ingreso la contraseña actual del rol "PROFESOR_SECUNDARIA"
+    And ingreso la nueva contraseña
+    And doy click en el boton de Cambiar Contraseña
+    Then se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente
+    And restauro la contraseña original del rol "PROFESOR_SECUNDARIA" para futuras pruebas
+    
 @Escenario30
 Scenario: ES-030 Validar que el rol Profesor de Secundaria puede editar su foto de perfil con foto de peso admitible 
     When en la barra de navegacion selecciono el apartado de Editar Perfil

@@ -47,5 +47,12 @@ Scenario: ES-019 Validar que el rol Auxiliar NO puede editar su foto de perfil c
     Then aparece un modal indicando que la imagen no debe superar los 5MB
     And el boton del modal para cambiar foto debe permanecer desahabilitado 
 
-@Escenario20
-Scenario: ES-020 Validar que el rol Auxiliar puede editar su contraseña 
+@contrauxi
+Scenario: ES-020 Validar que el rol Auxiliar puede editar su contraseña
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el icono de cambio de contraseña
+    And ingreso la contraseña actual del rol "AUXILIAR"
+    And ingreso la nueva contraseña
+    And doy click en el boton de Cambiar Contraseña
+    Then se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente
+    And restauro la contraseña original del rol "AUXILIAR" para futuras pruebas

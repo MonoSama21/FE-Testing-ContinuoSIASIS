@@ -29,8 +29,18 @@ Scenario: ES-033 Validar que el rol Responsable puede editar el campo Celular
     #And restauro los datos originales
     #Then verifico que los datos originales son correctos
 
+
 @Escenario34
-Scenario: ES-034 Validar que el rol Responsable puede editar la Contraseña
+Scenario: ES-034 Validar que el rol Responsable puede editar su contraseña
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el icono de cambio de contraseña
+    And ingreso la contraseña actual del rol "RESPONSABLE"
+    And ingreso la nueva contraseña
+    And doy click en el boton de Cambiar Contraseña
+    Then se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente
+    And restauro la contraseña original del rol "RESPONSABLE" para futuras pruebas
+    
+
 
 @Escenario35
 Scenario: ES-035 Validar que el rol Responsable puede editar su foto de perfil con foto de peso admitible 

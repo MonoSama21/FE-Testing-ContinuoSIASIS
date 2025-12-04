@@ -93,3 +93,31 @@ Then('se muestra la informacion de usuario como nombre de usuario', async functi
 Then('se muestra los datos del aula asignada', async function () {
     await myDataPage.validateClassroomInformation();
 });
+
+When('doy click en el icono de cambio de contraseña', async function () {
+    myDataPage = new MyDataPage(pageFixture.page);
+    await myDataPage.clickIconChangePassword();
+});
+
+
+When('ingreso la contraseña actual del rol {string}', async function (role) {
+    await myDataPage.fillCurrentPassword(role);
+});
+
+When('ingreso la nueva contraseña', async function () {
+    await myDataPage.fillNewPassword();
+});
+
+When('doy click en el boton de Cambiar Contraseña', async function () {
+    await myDataPage.clickBtnChangePassword();
+});
+
+
+
+Then('se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente', async function () {
+    await myDataPage.validatePasswordChangeSuccess();
+});
+
+Then('restauro la contraseña original del rol {string} para futuras pruebas', async function (role) {
+    await myDataPage.restoreOriginalPassword(role);
+});

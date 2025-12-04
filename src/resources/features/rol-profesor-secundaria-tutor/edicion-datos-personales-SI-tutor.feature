@@ -41,9 +41,16 @@ Scenario: ES-023 Validar que el rol Tutor de Secundaria puede editar el campo Co
     #And restauro los datos originales
     #Then verifico que los datos originales son correctos
 
+
 @Escenario24
 Scenario: ES-024 Validar que el rol Tutor de Secundaria puede editar la Contraseña
-
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el icono de cambio de contraseña
+    And ingreso la contraseña actual del rol "TUTOR"
+    And ingreso la nueva contraseña
+    And doy click en el boton de Cambiar Contraseña
+    Then se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente
+    And restauro la contraseña original del rol "TUTOR" para futuras pruebas
 @Escenario25
 Scenario: ES-025 Validar que el rol Tutor de Secundaria puede editar su foto de perfil con foto de peso admitible 
     When en la barra de navegacion selecciono el apartado de Editar Perfil

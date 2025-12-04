@@ -48,4 +48,12 @@ Scenario: ES-014 Validar que el rol Profesor de Primaria NO puede editar su foto
     Then aparece un modal indicando que la imagen no debe superar los 5MB
     And el boton del modal para cambiar foto debe permanecer desahabilitado 
 
-Scenario: ES-015 Validar que el rol Profesor de Primaria puede editar su contraseña 
+@contrp 
+Scenario: ES-015 Validar que el rol Profesor de Primaria puede editar su contraseña
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el icono de cambio de contraseña
+    And ingreso la contraseña actual del rol "PROFESOR_PRIMARIA"
+    And ingreso la nueva contraseña
+    And doy click en el boton de Cambiar Contraseña
+    Then se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente
+    And restauro la contraseña original del rol "PROFESOR_PRIMARIA" para futuras pruebas
