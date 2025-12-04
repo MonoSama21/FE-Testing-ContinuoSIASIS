@@ -21,3 +21,4 @@ Scenario Outline: ES-001 Validar que se puede realizar un inicio de sesión exit
         | AUXILIAR                |
         | TUTOR                   |
         | OTRO                    |
+        | RESPONSABLE             |

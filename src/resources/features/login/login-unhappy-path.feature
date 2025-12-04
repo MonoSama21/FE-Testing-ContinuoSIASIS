@@ -21,3 +21,4 @@ Scenario Outline: ES-002 Validar que no se puede realizar un inicio de sesion ex
         | AUXILIAR                |
         | TUTOR                   |
         | OTRO                    |
+        | RESPONSABLE             |

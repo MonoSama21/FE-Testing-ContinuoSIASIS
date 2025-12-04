@@ -8,6 +8,23 @@ let context: BrowserContext;
 setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
+  // Limpiar la carpeta de videos antes de iniciar las pruebas
+  const fs = require('fs');
+  const path = require('path');
+  const videosDir = path.join(process.cwd(), 'target', 'videos');
+  
+  try {
+    if (fs.existsSync(videosDir)) {
+      const files = fs.readdirSync(videosDir);
+      for (const file of files) {
+        fs.unlinkSync(path.join(videosDir, file));
+      }
+      console.log('🧹 Carpeta de videos limpiada antes de iniciar las pruebas');
+    }
+  } catch (error) {
+    console.log('⚠️ No se pudo limpiar la carpeta de videos:', error.message);
+  }
+
   browser = await chromium.launch({
     headless: true, // IMPORTANTE para GitHub Actions
   });
