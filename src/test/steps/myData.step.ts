@@ -7,11 +7,21 @@ dotenv.config({ path: 'playwright.env' });
 
 let myDataPage: MyDataPage;
 
-
-
 When('doy click en el boton de Editar Datos', async function () {
     myDataPage = new MyDataPage(pageFixture.page);
     await myDataPage.clickBtnEditDates();
+});
+
+When('se pueden editar los campos de celular', async function () {
+    await myDataPage.validateEditablePhone();
+});
+
+When('se puede editar el correo Electrónico', async function () {
+    await myDataPage.validateEditableEmail();
+});
+
+When('edito el campo de celular', async function () {
+    await myDataPage.editDataPhone();
 });
 
 When('solo se pueden editar los campos de celular y correo Electrónico', async function () {

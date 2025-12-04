@@ -40,7 +40,16 @@ export class MyDataPage {
         await this.myDatLocator.btnEditDates.click();
         console.log("✅ Se hizo click en Editar Datos");
     }
+
+    async validateEditablePhone(){
+        await this.myDatLocator.inputPhone.isVisible();
+        console.log("✔ Se validó que el campo Celular es editable");
+    }
     
+    async validateEditableEmail(){
+        await this.myDatLocator.iconPasswordChange.isVisible();
+    }
+
     async editDataName() {
         const fullName = faker.person.firstName() + " " + faker.person.middleName();
         this.generatedName = fullName;

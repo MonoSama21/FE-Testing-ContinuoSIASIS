@@ -14,21 +14,19 @@ Background:
 Scenario: ES-027 Validar que el rol Profesor de Secundaria puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
-    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico
-    And se muestra los datos del aula asignada 
-    And también se muestra el nombre de usuario
+    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto y Celular
+    And se muestra los datos de contacto como celular y correo Electrónico
+    And se muestra la informacion de usuario como nombre de usuario
 
 @Escenario28
 Scenario: ES-028 Validar que el rol Profesor de Secundaria puede editar el campo Celular
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
-    And solo se pueden editar los campos de celular y correo Electrónico
+    And se pueden editar los campos de celular
+    And se puede editar el correo Electrónico
     And edito el campo de celular
     And guardo los cambios realizados
     Then verifico que se han guardado los cambios asi como el mensaje de confirmacion
-    #And restauro los datos originales
-    #Then verifico que los datos originales son correctos
-
 
 @Escenario29
 Scenario: ES-029 Validar que el rol Profesor de Secundaria puede editar su contraseña
@@ -39,7 +37,7 @@ Scenario: ES-029 Validar que el rol Profesor de Secundaria puede editar su contr
     And doy click en el boton de Cambiar Contraseña
     Then se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente
     And restauro la contraseña original del rol "PROFESOR_SECUNDARIA" para futuras pruebas
-    
+
 @Escenario30
 Scenario: ES-030 Validar que el rol Profesor de Secundaria puede editar su foto de perfil con foto de peso admitible 
     When en la barra de navegacion selecciono el apartado de Editar Perfil

@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario con rol de Directivo\n    Quiero poder editar mis datos personales\n    Para mantener mi informacion actualizada",
+    "description": "    Como tutor de secundaria del colegio\n    Quiero poder visualizar y editar mis datos personales según sea necesario\n    Para mantener mi información actualizada en el sistema y facilitar la comunicación con la comunidad educativa",
     "elements": [
       {
         "description": "",
-        "id": "edicion-de-datos-personales-por-rol-directivo;es-009-validar-que-el-rol-directivo-puede-editar-su-contraseña",
+        "id": "edicion-de-datos-personales-por-rol-tutor-de-secundaria;es-026-validar-que-el-rol-tutor-de-secundaria-no-puede-editar-su-foto-de-perfil-con-foto-de-peso-no-admitible-(mayor-a-5mb)",
         "keyword": "Scenario",
-        "line": 61,
-        "name": "ES-009 Validar que el rol Directivo puede editar su contraseña",
+        "line": 65,
+        "name": "ES-026 Validar que el rol Tutor de Secundaria NO puede editar su foto de perfil con foto de peso no admitible (mayor a 5MB)",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 310686600
+              "duration": 146629099
             }
           },
           {
@@ -27,24 +27,24 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1158754100
+              "duration": 1135669699
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 9,
-            "name": "selecciono el rol \"DIRECTIVO\"",
+            "name": "selecciono el rol \"TUTOR\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 159645499
+              "duration": 62149699
             },
             "embeddings": [
               {
-                "data": "U2VsZWNjaW9uYWRvIERpcmVjdGl2bw==",
+                "data": "U2VsZWNjaW9uYWRvIFR1dG9y",
                 "mime_type": "text/plain"
               }
             ]
@@ -59,11 +59,11 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2284321600
+              "duration": 2114181500
             },
             "embeddings": [
               {
-                "data": "SW5ncmVzbyB1c3VhcmlvOiBkaXJlY3Rvci5hc3VuY2lvbjggeSBjb250cmFzZcOxYTogMTIzNDU2NzhQ",
+                "data": "SW5ncmVzbyB1c3VhcmlvOiBkYW5pZWxfc2FuY2hlel8xNTQyIHkgY29udHJhc2XDsWE6IDE1NDIwNzQ1",
                 "mime_type": "text/plain"
               }
             ]
@@ -72,13 +72,13 @@
             "arguments": [],
             "keyword": "And ",
             "line": 11,
-            "name": "accedo al sistema como \"DIRECTIVO\"",
+            "name": "accedo al sistema como \"TUTOR\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 3101726599
+              "duration": 3022828300
             },
             "embeddings": [
               {
@@ -86,7 +86,7 @@
                 "mime_type": "text/plain"
               },
               {
-                "data": "SW5ncmVzbyBleGl0b3NvIGNvbW8gRElSRUNUSVZP",
+                "data": "SW5ncmVzbyBleGl0b3NvIGNvbW8gVFVUT1I=",
                 "mime_type": "text/plain"
               }
             ]
@@ -94,14 +94,14 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 62,
+            "line": 66,
             "name": "en la barra de navegacion selecciono el apartado de Editar Perfil",
             "match": {
               "location": "src\\test\\steps\\dashboard.step.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 188951600
+              "duration": 101520999
             },
             "embeddings": [
               {
@@ -113,98 +113,18 @@
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 63,
-            "name": "doy click en el icono de cambio de contraseña",
-            "match": {
-              "location": "src\\test\\steps\\myData.step.ts:97"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2584894800
-            },
-            "embeddings": [
-              {
-                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gZWwgaWNvbm8gZGUgY2FtYmlvIGRlIGNvbnRyYXNlw7Fh",
-                "mime_type": "text/plain"
-              }
-            ]
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 64,
-            "name": "ingreso la contraseña actual del rol \"DIRECTIVO\"",
-            "match": {
-              "location": "src\\test\\steps\\myData.step.ts:103"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 113499600
-            },
-            "embeddings": [
-              {
-                "data": "4pyFIFNlIGluZ3Jlc8OzIGxhIGNvbnRyYXNlw7FhIGFjdHVhbA==",
-                "mime_type": "text/plain"
-              }
-            ]
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 65,
-            "name": "ingreso la nueva contraseña",
-            "match": {
-              "location": "src\\test\\steps\\myData.step.ts:107"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 42675699
-            },
-            "embeddings": [
-              {
-                "data": "4pyFIFNlIGluZ3Jlc8OzIGxhIG51ZXZhIGNvbnRyYXNlw7FhOiBGM2REamlpOEs1amNiMVY=",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "8J+SviBDb250cmFzZcOxYSBndWFyZGFkYSBwYXJhIHJlc3RhdXJhY2nDs24gcG9zdGVyaW9y",
-                "mime_type": "text/plain"
-              }
-            ]
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 66,
-            "name": "doy click en el boton de Cambiar Contraseña",
-            "match": {
-              "location": "src\\test\\steps\\myData.step.ts:111"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 86290399
-            },
-            "embeddings": [
-              {
-                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gZWwgYm90w7NuIENhbWJpYXIgQ29udHJhc2XDsWE=",
-                "mime_type": "text/plain"
-              }
-            ]
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
             "line": 67,
-            "name": "se muestra un mensaje de confirmacion indicando que la contraseña ha sido cambiada exitosamente",
+            "name": "doy click en el boton de Editar Datos",
             "match": {
-              "location": "src\\test\\steps\\myData.step.ts:117"
+              "location": "src\\test\\steps\\myData.step.ts:10"
             },
             "result": {
               "status": "passed",
-              "duration": 1878149400
+              "duration": 1378326599
             },
             "embeddings": [
               {
-                "data": "4pyFIE1vZGFsIGRlIMOpeGl0byB2YWxpZGFkbzogQ29udHJhc2XDsWEgYWN0dWFsaXphZGEgY29ycmVjdGFtZW50ZQ==",
+                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gRWRpdGFyIERhdG9z",
                 "mime_type": "text/plain"
               }
             ]
@@ -213,37 +133,62 @@
             "arguments": [],
             "keyword": "And ",
             "line": 68,
-            "name": "restauro la contraseña original del rol \"DIRECTIVO\" para futuras pruebas",
+            "name": "hago click en Cambiar Foto",
             "match": {
-              "location": "src\\test\\steps\\myData.step.ts:121"
+              "location": "src\\test\\steps\\myData.step.ts:61"
             },
             "result": {
               "status": "passed",
-              "duration": 6346514800
+              "duration": 40049599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "subo una foto de tamaño mayor a 5MB",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15170799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 70,
+            "name": "aparece un modal indicando que la imagen no debe superar los 5MB",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:82"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11665599
             },
             "embeddings": [
               {
-                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gZWwgaWNvbm8gZGUgY2FtYmlvIGRlIGNvbnRyYXNlw7Fh",
+                "data": "4pyUIEVsIG1vZGFsIG11ZXN0cmEgY29ycmVjdGFtZW50ZSBlbCBtZW5zYWplIGRlIGzDrW1pdGUgZGUgNU1C",
                 "mime_type": "text/plain"
-              },
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "el boton del modal para cambiar foto debe permanecer desahabilitado",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4560299
+            },
+            "embeddings": [
               {
-                "data": "8J+UkSBDb250cmFzZcOxYSBhY3R1YWwgKGdlbmVyYWRhIHByZXZpYW1lbnRlKTogRjNkRGppaThLNWpjYjFW",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "8J+UkSBOdWV2YSBjb250cmFzZcOxYSAob3JpZ2luYWwpOiAxMjM0NTY3OFA=",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gZWwgYm90w7NuIENhbWJpYXIgQ29udHJhc2XDsWE=",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "4pyFIE1vZGFsIGRlIMOpeGl0byB2YWxpZGFkbzogQ29udHJhc2XDsWEgYWN0dWFsaXphZGEgY29ycmVjdGFtZW50ZQ==",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "4pyFIENvbnRyYXNlw7FhIHJlc3RhdXJhZGEgYSBsYSBvcmlnaW5hbCBjb3JyZWN0YW1lbnRl",
+                "data": "RWwgYm90b24gZGUgQ2FtYmlhciBGb3RvIGRlbnRybyBkZWwgbW9kYWwgZXN0w6EgZGVzaGFiaWxpdGFkbw==",
                 "mime_type": "text/plain"
               }
             ]
@@ -253,7 +198,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2591100200
+              "duration": 222916300
             }
           }
         ],
@@ -271,17 +216,17 @@
             "line": 1
           },
           {
-            "name": "@contrd",
-            "line": 60
+            "name": "@Escenario26",
+            "line": 64
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "edicion-de-datos-personales-por-rol-directivo",
+    "id": "edicion-de-datos-personales-por-rol-tutor-de-secundaria",
     "line": 2,
     "keyword": "Feature",
-    "name": "Edicion de Datos Personales por Rol Directivo",
+    "name": "Edicion de Datos Personales por Rol Tutor de Secundaria",
     "tags": [
       {
         "name": "@test",
@@ -296,6 +241,6 @@
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-directivo\\edicion-datos-personales.feature"
+    "uri": "src\\resources\\features\\rol-profesor-secundaria-tutor\\edicion-datos-personales-SI-tutor.feature"
   }
 ]
