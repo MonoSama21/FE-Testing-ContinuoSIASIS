@@ -1,58 +1,48 @@
 const fs = require('fs');
-const { JSDOM } = require('jsdom');
 
-// Leer el archivo HTML del reporte
+// Leer el archivo HTML del reporte de forma eficiente (sin parsear todo el DOM)
 const htmlContent = fs.readFileSync('target/cucumber-report.html', 'utf-8');
-const dom = new JSDOM(htmlContent);
-const document = dom.window.document;
 
-// Obtener solo los escenarios principales (no los steps individuales)
-// Los escenarios tienen un <b>Scenario:</b> dentro del enlace
-const allLinks = document.querySelectorAll('a[data-toggle="collapse"]');
-const scenarioLinks = Array.from(allLinks).filter(link => {
-  const boldText = link.querySelector('b');
-  return boldText && boldText.textContent.includes('Scenario');
-});
+// Usar expresiones regulares para extraer escenarios (más eficiente que JSDOM)
+const scenarioRegex = /<b>Scenario:<\/b><div class="ellipsis" data-text="([^"]+)">.*?<span class="label label-(\w+)"/gs;
+const matches = [...htmlContent.matchAll(scenarioRegex)];
 
-console.log(`📊 Total de enlaces encontrados: ${allLinks.length}`);
-console.log(`📊 Escenarios principales filtrados: ${scenarioLinks.length}`);
+console.log(`📊 Escenarios encontrados: ${matches.length}`);
 
 let tableRows = '';
 let totalPassed = 0;
 let totalFailed = 0;
 let totalPending = 0;
 
-scenarioLinks.forEach((link, index) => {
-  // Obtener el nombre del escenario desde el div con clase "ellipsis"
-  const nameElement = link.querySelector('.ellipsis');
-  const scenarioName = nameElement ? nameElement.getAttribute('data-text') || nameElement.textContent.trim() : 'N/A';
+const scenarios = [];
+
+matches.forEach((match, index) => {
+  const scenarioName = match[1]; // Nombre del escenario desde data-text
+  const labelClass = match[2]; // success, danger, warning
   
-  console.log(`  [${index + 1}] Procesando: ${scenarioName}`);
+  console.log(`  [${index + 1}] ${scenarioName} -> ${labelClass}`);
   
-  // Obtener los labels de estado (success, danger, warning) dentro del link
-  const successLabel = link.querySelector('.label-success');
-  const dangerLabel = link.querySelector('.label-danger');
-  const warningLabel = link.querySelector('.label-warning');
+  // Buscar si tiene label-danger en ese bloque de escenario
+  const scenarioBlock = match[0];
+  const hasDanger = scenarioBlock.includes('label-danger');
+  const hasWarning = scenarioBlock.includes('label-warning');
+  const hasSuccess = scenarioBlock.includes('label-success');
   
-  // Determinar el estado del escenario
   let status = '';
   let statusColor = '';
   let statusIcon = '';
   
-  if (dangerLabel) {
-    // Si tiene algún step fallido (rojo), el escenario FAILED
+  if (hasDanger) {
     status = 'FAILED';
     statusColor = '#dc3545';
     statusIcon = '❌';
     totalFailed++;
-  } else if (warningLabel && !successLabel) {
-    // Si solo tiene steps pendientes (amarillo), está PENDING
+  } else if (hasWarning && !hasSuccess) {
     status = 'PENDING';
     statusColor = '#ffc107';
     statusIcon = '⏸️';
     totalPending++;
-  } else if (successLabel) {
-    // Si tiene steps exitosos y no tiene fallos, está PASSED
+  } else if (hasSuccess) {
     status = 'PASSED';
     statusColor = '#28a745';
     statusIcon = '✅';
@@ -63,7 +53,8 @@ scenarioLinks.forEach((link, index) => {
     statusIcon = '❓';
   }
   
-  // Crear fila de la tabla
+  scenarios.push({ name: scenarioName, status, statusColor, statusIcon });
+  
   tableRows += `
     <tr>
       <td style="padding: 12px; border: 1px solid #ddd; text-align: left;">${scenarioName}</td>
@@ -123,27 +114,9 @@ let markdownTable = `## 📊 Resultados de Ejecución
 |----------------|--------|
 `;
 
-// Recrear las filas en formato Markdown (usar los mismos escenarios filtrados)
-scenarioLinks.forEach(link => {
-  const nameElement = link.querySelector('.ellipsis');
-  const scenarioName = nameElement ? nameElement.getAttribute('data-text') || nameElement.textContent.trim() : 'N/A';
-  
-  const successLabel = link.querySelector('.label-success');
-  const dangerLabel = link.querySelector('.label-danger');
-  const warningLabel = link.querySelector('.label-warning');
-  
-  let status = '';
-  if (dangerLabel) {
-    status = '❌ FAILED';
-  } else if (warningLabel && !successLabel) {
-    status = '⏸️ PENDING';
-  } else if (successLabel) {
-    status = '✅ PASSED';
-  } else {
-    status = '❓ UNKNOWN';
-  }
-  
-  markdownTable += `| ${scenarioName} | ${status} |\n`;
+// Recrear las filas en formato Markdown
+scenarios.forEach(scenario => {
+  markdownTable += `| ${scenario.name} | ${scenario.statusIcon} ${scenario.status} |\n`;
 });
 
 // Guardar la tabla Markdown

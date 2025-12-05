@@ -75,6 +75,9 @@ jobs:
             <h2 style="color:#007bff;">🔵 Ejecución iniciada</h2>
             <p>Las pruebas de integración han comenzado.</p>
             <p><strong>Tag ejecutado:</strong> <span style="color:#007bff;">${{ steps.params.outputs.tag }}</span></p>
+          
+            <br>
+            <p>Saludos,<br><strong>QA Automation Semisenior Yrvin Pachas</strong></p>
           </div>
 
     - name: Install dependencies
@@ -107,11 +110,15 @@ jobs:
     # =========================================================
     # 🌐 DESPLEGAR REPORTE EN GITHUB PAGES
     # =========================================================
+    - name: Limpiar videos del reporte para GitHub Pages
+      if: always()
+      run: node .github/scripts/clean-report-for-pages.js
+    
     - name: Preparar reporte para GitHub Pages
       if: always()
       run: |
         mkdir -p gh-pages
-        cp target/cucumber-report.html gh-pages/index.html 2>/dev/null || echo "No se encontró el reporte HTML"
+        cp target/cucumber-report-clean.html gh-pages/index.html 2>/dev/null || echo "No se encontró el reporte HTML limpio"
     
     # =========================================================
     # 📊 EXTRAER RESULTADOS DEL REPORTE HTML PARA EMAIL
