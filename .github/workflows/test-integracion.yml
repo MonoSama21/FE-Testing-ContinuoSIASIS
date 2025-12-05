@@ -24,6 +24,10 @@ jobs:
   Pruebas-FrontEnd-Integracion:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 👈 Permiso para hacer push a gh-pages
+      pages: write     # 👈 Permiso para desplegar en GitHub Pages
+      id-token: write  # 👈 Permiso para autenticación
 
     steps:
     - uses: actions/checkout@v4
