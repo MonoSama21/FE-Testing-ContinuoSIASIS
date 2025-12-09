@@ -164,9 +164,30 @@ export class LoginPage {
 
     async validateLoginSuccess() {
         await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(3000);
-        await this.loginLocator.messageWelcomeLogin.isVisible();
-        await this.loginLocator.imgLogoUNDC.isVisible();
+        
+        // Esperar a que al menos uno de los elementos del dashboard esté visible
+        try {
+            await this.loginLocator.messageWelcomeLogin.waitFor({ state: 'visible' });
+            console.log("✅ Mensaje de bienvenida visible");
+        } catch (error) {
+            console.log("⚠️ Mensaje de bienvenida no encontrado, verificando logo UNDC...");
+        }
+        
+        try {
+            await this.loginLocator.imgLogoUNDC.waitFor({ state: 'visible' });
+            console.log("✅ Logo UNDC visible");
+        } catch (error) {
+            console.log("⚠️ Logo UNDC no encontrado");
+        }
+        
+        // Validar que al menos uno de los dos elementos está visible
+        const welcomeVisible = await this.loginLocator.messageWelcomeLogin.isVisible();
+        const logoVisible = await this.loginLocator.imgLogoUNDC.isVisible();
+        
+        if (!welcomeVisible && !logoVisible) {
+            throw new Error("❌ No se detectaron elementos del dashboard después del login. Login falló.");
+        }
+        
         console.log("Ingreso exitoso al sistema");
     }
 

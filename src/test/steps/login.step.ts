@@ -26,8 +26,10 @@ When('ingreso mi nombre de usuario y contraseña validos', async function () {
 });
 
 Then('accedo al sistema como {string}', async function (string) {
+    loginPage = new LoginPage(pageFixture.page);
     await loginPage.validateLoginSuccess();
-    console.log(`Ingreso exitoso como ${string}`);    
+    console.log(`Ingreso exitoso como ${string}`);
+    //await pageFixture.page.pause();    
 });
 
 When('ingreso mi nombre de usuario y contraseña invalidos', async function () {
