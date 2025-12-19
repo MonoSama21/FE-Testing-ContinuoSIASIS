@@ -47,6 +47,10 @@ export class DashboardPage {
                 await this.dashboardLocator.optionCommunications.click();
                 console.log("✅ Se hizo click en Comunicados");
                 break;
+            case "Mis Asistencias":
+                await this.dashboardLocator.optionMyAssistances.click();
+                console.log("✅ Se hizo click en Mis Asistencias");
+                break;
             default:
                 console.log(`❌ Opción no reconocida: ${option}`);
                 break;

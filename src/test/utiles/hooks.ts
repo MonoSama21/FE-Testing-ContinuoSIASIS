@@ -56,7 +56,7 @@ Before(async function () {
 
   await page.setViewportSize({
     width: 1500,
-    height: 800,
+    height: 700,
   });
 });
 

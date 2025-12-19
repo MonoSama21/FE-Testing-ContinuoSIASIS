@@ -28,6 +28,10 @@ export class DashboardLocator {
         return this.page.getByRole('button', { name: 'Personal Administrativo' });
     }
 
+    get optionMyAssistances(){
+        return this.page.getByRole('button', { name: 'Mis Asistencias' });
+    }
+
     get optionPersonalRecords(){
         return this.page.getByRole('button', { name: 'Registros' }).first();
     }

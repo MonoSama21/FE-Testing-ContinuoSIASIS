@@ -35,6 +35,7 @@ export class LoginPage {
     async fillCredentials(role: string) {
         let username = '';
         let password = '';
+        await this.validateImgLogoIsVisible();
         switch (role) {
             case 'DIRECTIVO':
                 username = process.env.DIRECTIVO_USERNAME || '';
